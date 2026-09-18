@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="rootStackPane" prefHeight="800.0" prefWidth="1280.0" 
+           stylesheets="@../css/variables.css, @../css/main.css, @../css/components.css" 
+           xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.agriloop.controller.MainLayoutController">
+    
+    <!-- Main Two-Column Application Shell -->
+    <HBox spacing="0.0">
+        <!-- Persistent Sidebar Navigation -->
+        <fx:include source="Sidebar.fxml" />
+
+        <!-- Main Body Area -->
+        <VBox spacing="0.0" HBox.hgrow="ALWAYS">
+            <!-- Persistent Top Bar Header -->
+            <fx:include source="TopBar.fxml" />
+
+            <!-- Dynamic View Host Container -->
+            <StackPane fx:id="mainContentHost" styleClass="content-viewport" VBox.vgrow="ALWAYS" />
+        </VBox>
+    </HBox>
+
+    <!-- Global Modal Dialog & Overlay Host -->
+    <StackPane fx:id="modalHostPane" styleClass="modal-overlay" visible="false" managed="false" mouseTransparent="true" />
+</StackPane>

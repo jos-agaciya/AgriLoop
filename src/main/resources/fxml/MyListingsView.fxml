@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane stylesheets="@../css/main.css, @../css/components.css" 
+           xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.agriloop.controller.MyListingsViewController">
+
+    <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+        <VBox spacing="20.0" style="-fx-padding: 0 8px 32px 0;">
+            <!-- Top Header -->
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+                <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+                    <Label styleClass="heading-2" text="My Agricultural Waste Listings" />
+                    <Label styleClass="subheading" text="Manage your posted biomass inventory, track stock, and update pricing" />
+                </VBox>
+                <Button fx:id="createNewBtn" styleClass="btn-primary" text="Post New Listing">
+                    <graphic>
+                        <StackPane fx:id="addIconContainer" />
+                    </graphic>
+                </Button>
+            </HBox>
+
+            <!-- Listings Container -->
+            <VBox fx:id="listingsContainer" alignment="CENTER" minHeight="300.0" spacing="14.0" />
+        </VBox>
+    </ScrollPane>
+
+    <!-- Edit Listing Modal Overlay -->
+    <StackPane fx:id="editModalOverlay" managed="false" styleClass="modal-overlay" visible="false">
+        <VBox alignment="CENTER" maxHeight="600.0" maxWidth="540.0" spacing="16.0" styleClass="modal-dialog">
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" styleClass="modal-header">
+                <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+                    <Label styleClass="heading-2" text="Edit Waste Listing" />
+                    <Label styleClass="subheading" text="Update pricing, available quantity, or description" />
+                </VBox>
+                <Button fx:id="editModalCloseBtn" styleClass="btn-ghost" />
+            </HBox>
+
+            <!-- Form -->
+            <VBox spacing="12.0">
+                <VBox spacing="4.0">
+                    <Label styleClass="form-label" text="Listing Title *" />
+                    <TextField fx:id="editTitleField" promptText="Listing Title" />
+                </VBox>
+
+                <HBox spacing="10.0">
+                    <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                        <Label styleClass="form-label" text="Available Quantity (Tons) *" />
+                        <TextField fx:id="editQuantityField" promptText="e.g. 20.0" />
+                    </VBox>
+                    <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                        <Label styleClass="form-label" text="Price per Ton (₹) *" />
+                        <TextField fx:id="editPriceField" promptText="e.g. 2400.00" />
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="4.0">
+                    <Label styleClass="form-label" text="Farm Location *" />
+                    <TextField fx:id="editLocationField" promptText="Farm or Storage Location" />
+                </VBox>
+
+                <VBox spacing="4.0">
+                    <Label styleClass="form-label" text="Description" />
+                    <TextArea fx:id="editDescriptionArea" prefRowCount="3" promptText="Details on moisture, baling, packaging..." />
+                </VBox>
+
+                <Label fx:id="editErrorLabel" style="-fx-text-fill: #DC2626; -fx-font-size: 12px;" />
+            </VBox>
+
+            <!-- Footer -->
+            <HBox alignment="CENTER_RIGHT" spacing="12.0" styleClass="modal-footer">
+                <Button fx:id="editModalCancelBtn" styleClass="btn-secondary" text="Cancel" />
+                <Button fx:id="editModalSaveBtn" styleClass="btn-primary" text="Save Changes" />
+            </HBox>
+        </VBox>
+    </StackPane>
+</StackPane>

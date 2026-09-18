@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fitToWidth="true" styleClass="scroll-pane" 
+            stylesheets="@../css/main.css, @../css/components.css" 
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.agriloop.controller.SalesRequestsViewController">
+    
+    <VBox spacing="24.0" style="-fx-padding: 0 8px 32px 0;">
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="16.0">
+            <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label styleClass="heading-2" text="Sales &amp; Purchase Requests" />
+                    <Label fx:id="countLabel" styleClass="badge, badge-neutral" text="0 requests" />
+                </HBox>
+                <Label styleClass="subheading" text="Review and manage incoming agricultural waste procurement requests from industrial buyers" />
+            </VBox>
+            <Button fx:id="refreshBtn" styleClass="btn-secondary" text="Refresh">
+                <graphic>
+                    <StackPane fx:id="refreshIconBox" />
+                </graphic>
+            </Button>
+        </HBox>
+
+        <!-- Requests Feed -->
+        <VBox fx:id="requestsContainer" spacing="14.0" minHeight="300.0" />
+    </VBox>
+</ScrollPane>

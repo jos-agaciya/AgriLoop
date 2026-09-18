@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="20.0" styleClass="topbar-container" 
+      stylesheets="@../css/main.css, @../css/components.css" 
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.agriloop.controller.TopBarController">
+    
+    <!-- Dynamic Page Title and Subtitle -->
+    <VBox alignment="CENTER_LEFT" spacing="2.0">
+        <Label fx:id="pageTitleLabel" styleClass="heading-2" text="Dashboard" />
+        <Label fx:id="pageSubtitleLabel" styleClass="subheading" text="Overview &amp; key metrics" />
+    </VBox>
+
+    <Region HBox.hgrow="ALWAYS" />
+
+    <!-- Global Search -->
+    <HBox alignment="CENTER_LEFT" spacing="8.0" styleClass="search-input-box">
+        <StackPane fx:id="searchIconContainer" />
+        <TextField fx:id="searchInputField" promptText="Search listings, orders..." styleClass="search-input-field" />
+    </HBox>
+
+    <!-- Notification Bell Button -->
+    <StackPane>
+        <Button fx:id="notificationsButton" styleClass="btn-icon">
+            <graphic>
+                <StackPane fx:id="notifIconContainer" />
+            </graphic>
+        </Button>
+        <Label fx:id="unreadBadgeLabel" alignment="CENTER" prefHeight="16.0" prefWidth="16.0" 
+               style="-fx-background-color: #EF4444; -fx-text-fill: white; -fx-font-size: 9.5px; -fx-font-weight: bold; -fx-background-radius: 999px;" 
+               text="0" visible="false" StackPane.alignment="TOP_RIGHT" />
+    </StackPane>
+
+    <!-- Authenticated Profile Chip -->
+    <HBox fx:id="profileChip" alignment="CENTER_LEFT" spacing="10.0" styleClass="profile-chip">
+        <StackPane fx:id="avatarIconContainer" styleClass="avatar-circle" />
+        <VBox alignment="CENTER_LEFT" spacing="1.0">
+            <Label fx:id="profileNameLabel" style="-fx-font-size: 12.5px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" text="Account" />
+            <Label fx:id="profileRoleLabel" style="-fx-font-size: 11px; -fx-text-fill: #64748B;" text="Member" />
+        </VBox>
+    </HBox>
+</HBox>

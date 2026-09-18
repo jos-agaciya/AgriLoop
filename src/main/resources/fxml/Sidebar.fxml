@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="sidebarContainer" prefWidth="250.0" spacing="12.0" styleClass="sidebar-container" 
+      stylesheets="@../css/main.css, @../css/sidebar.css, @../css/components.css" 
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.agriloop.controller.SidebarController">
+    
+    <!-- Brand Header -->
+    <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="brand-header">
+        <StackPane fx:id="logoIconContainer" styleClass="brand-logo-icon-box" />
+        <VBox spacing="1.0">
+            <Label styleClass="brand-title" text="AgriLoop" />
+            <Label style="-fx-text-fill: #64748B; -fx-font-size: 11px;" text="Waste Marketplace" />
+        </VBox>
+    </HBox>
+
+    <!-- Authenticated User Profile Summary Card -->
+    <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="role-selector-card">
+        <StackPane fx:id="userAvatarIconBox" styleClass="avatar-circle" />
+        <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+            <Label fx:id="userNameLabel" style="-fx-text-fill: #FFFFFF; -fx-font-size: 12.5px; -fx-font-weight: bold;" text="User" />
+            <Label fx:id="userRoleBadgeLabel" style="-fx-text-fill: #10B981; -fx-font-size: 10px; -fx-font-weight: bold; -fx-text-transform: uppercase;" text="MEMBER" />
+        </VBox>
+    </HBox>
+
+    <!-- Section Title -->
+    <Label styleClass="nav-section-title" text="MENU" />
+
+    <!-- Dynamic Role Navigation Buttons -->
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="scroll-pane" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS">
+        <VBox fx:id="navButtonsContainer" spacing="6.0" />
+    </ScrollPane>
+
+    <!-- Sidebar Footer / Sign Out Button -->
+    <VBox styleClass="sidebar-footer">
+        <Button fx:id="signOutButton" alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" styleClass="nav-button" text="Sign Out">
+            <graphic>
+                <StackPane fx:id="signOutIconBox" />
+            </graphic>
+        </Button>
+    </VBox>
+</VBox>

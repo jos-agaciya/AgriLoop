@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fitToWidth="true" styleClass="scroll-pane" 
+            stylesheets="@../css/main.css, @../css/components.css" 
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.agriloop.controller.ProfileViewController">
+    
+    <VBox spacing="24.0" style="-fx-padding: 0 8px 32px 0;">
+        <!-- Header Banner -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="card" style="-fx-padding: 24px 28px;">
+            <StackPane fx:id="profileAvatarIconBox" styleClass="avatar-circle" style="-fx-padding: 18px;" />
+            <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                <Label fx:id="profileHeaderNameLabel" styleClass="heading-1" text="Member Profile" />
+                <Label fx:id="profileHeaderRoleLabel" styleClass="subheading" text="Stakeholder Account" />
+            </VBox>
+            <Button fx:id="changePhotoBtn" styleClass="btn-secondary" text="Change Photo">
+                <graphic>
+                    <StackPane fx:id="cameraIconBox" />
+                </graphic>
+            </Button>
+        </HBox>
+
+        <!-- Personal & Account Information Card -->
+        <VBox maxWidth="800.0" spacing="22.0" styleClass="card" style="-fx-padding: 28px;">
+            <HBox alignment="CENTER_LEFT">
+                <VBox spacing="2.0">
+                    <Label styleClass="heading-2" text="Personal Information" />
+                    <Label styleClass="subheading" text="Manage your contact details and marketplace identity" />
+                </VBox>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="editProfileBtn" styleClass="btn-secondary" text="Edit Profile" />
+                <Button fx:id="saveChangesBtn" styleClass="btn-primary" text="Save Changes" visible="false" />
+            </HBox>
+
+            <GridPane hgap="20.0" vgap="16.0">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150.0" prefWidth="180.0" />
+                    <ColumnConstraints hgrow="ALWAYS" />
+                </columnConstraints>
+
+                <!-- Full Name -->
+                <Label styleClass="form-label" text="Full Name" GridPane.rowIndex="0" />
+                <TextField fx:id="fullNameField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <!-- Email -->
+                <Label styleClass="form-label" text="Email Address" GridPane.rowIndex="1" />
+                <TextField fx:id="emailField" editable="false" style="-fx-opacity: 0.85;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <!-- Phone -->
+                <Label styleClass="form-label" text="Phone Number" GridPane.rowIndex="2" />
+                <TextField fx:id="phoneField" editable="false" promptText="Not specified" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <!-- Location -->
+                <Label styleClass="form-label" text="Location / Region" GridPane.rowIndex="3" />
+                <TextField fx:id="locationField" editable="false" promptText="Not specified" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <!-- Bio / Notes -->
+                <Label styleClass="form-label" text="Organization Bio" GridPane.rowIndex="4" />
+                <TextArea fx:id="bioArea" editable="false" prefHeight="75.0" promptText="Add brief description of your agricultural or industrial operations..." wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            </GridPane>
+
+            <!-- Account Details Section -->
+            <VBox spacing="14.0" style="-fx-padding: 16px 0 0 0; -fx-border-color: -fx-color-border transparent transparent transparent; -fx-border-width: 1 0 0 0;">
+                <Label styleClass="heading-3" text="Account Details" />
+
+                <HBox spacing="32.0">
+                    <VBox spacing="4.0">
+                        <Label styleClass="form-label" text="Stakeholder Role" />
+                        <Label fx:id="roleValueLabel" styleClass="badge, badge-info" text="FARMER" />
+                    </VBox>
+
+                    <VBox spacing="4.0">
+                        <Label styleClass="form-label" text="Account Status" />
+                        <Label fx:id="statusValueLabel" styleClass="badge, badge-success" text="Active Member" />
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- Feedback Label -->
+            <Label fx:id="profileFeedbackLabel" style="-fx-text-fill: #EF4444; -fx-font-weight: bold;" />
+        </VBox>
+    </VBox>
+</ScrollPane>

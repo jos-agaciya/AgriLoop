@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox styleClass="auth-root" stylesheets="@../css/variables.css, @../css/main.css, @../css/auth.css" 
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.agriloop.controller.AuthViewController">
+    
+    <!-- Left Hero Branding Panel -->
+    <VBox spacing="36.0" styleClass="auth-hero-panel">
+        <!-- Logo & Header -->
+        <VBox spacing="14.0">
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+                <StackPane fx:id="heroBrandIconBox" styleClass="brand-logo-icon-box" />
+                <Label styleClass="auth-hero-title" text="AgriLoop" />
+            </HBox>
+            <Label styleClass="auth-hero-subtitle" text="Transforming agricultural residue into sustainable industrial value through digital marketplace connections." />
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS" />
+
+        <!-- Value Pillars Highlights (Vector Icons - No Emojis) -->
+        <VBox spacing="20.0">
+            <HBox styleClass="auth-feature-row">
+                <StackPane fx:id="heroFeatureIcon1" styleClass="auth-feature-icon-box" />
+                <VBox spacing="2.0">
+                    <Label styleClass="auth-feature-title" text="Direct Farmer Monetization" />
+                    <Label styleClass="auth-feature-desc" text="List crop residues, straws, and husks with fair transparent pricing." />
+                </VBox>
+            </HBox>
+
+            <HBox styleClass="auth-feature-row">
+                <StackPane fx:id="heroFeatureIcon2" styleClass="auth-feature-icon-box" />
+                <VBox spacing="2.0">
+                    <Label styleClass="auth-feature-title" text="Industrial Biomass Sourcing" />
+                    <Label styleClass="auth-feature-desc" text="Procure verified, high-grade agricultural byproducts with escrow safety." />
+                </VBox>
+            </HBox>
+
+            <HBox styleClass="auth-feature-row">
+                <StackPane fx:id="heroFeatureIcon3" styleClass="auth-feature-icon-box" />
+                <VBox spacing="2.0">
+                    <Label styleClass="auth-feature-title" text="CO₂ Offset Accounting" />
+                    <Label styleClass="auth-feature-desc" text="Prevent open field burning and track real atmospheric emission reductions." />
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS" />
+
+        <Label style="-fx-text-fill: #64748B; -fx-font-size: 11.5px;" text="© AgriLoop Technologies • Circular Bio-Economy" />
+    </VBox>
+
+    <!-- Right Authentication Form Panel -->
+    <ScrollPane fitToWidth="true" styleClass="scroll-pane" HBox.hgrow="ALWAYS">
+        <VBox alignment="CENTER" spacing="22.0" styleClass="auth-form-panel">
+            <VBox alignment="CENTER" maxWidth="440.0" spacing="20.0">
+                <!-- Tab Switcher (Sign In / Register) -->
+                <HBox alignment="CENTER" styleClass="auth-tab-bar">
+                    <Button fx:id="tabSignInBtn" maxWidth="1.7976931348623157E308" styleClass="auth-tab-btn, auth-tab-btn-active" text="Sign In" HBox.hgrow="ALWAYS" />
+                    <Button fx:id="tabRegisterBtn" maxWidth="1.7976931348623157E308" styleClass="auth-tab-btn" text="Create Account" HBox.hgrow="ALWAYS" />
+                </HBox>
+
+                <!-- Feedback Banners -->
+                <HBox fx:id="authErrorBanner" alignment="CENTER_LEFT" managed="false" styleClass="auth-error-banner" visible="false">
+                    <Label fx:id="authErrorText" styleClass="auth-error-text" wrapText="true" />
+                </HBox>
+                <HBox fx:id="authSuccessBanner" alignment="CENTER_LEFT" managed="false" styleClass="auth-success-banner" visible="false">
+                    <Label fx:id="authSuccessText" styleClass="auth-success-text" wrapText="true" />
+                </HBox>
+
+                <!-- Sign In Form -->
+                <VBox fx:id="signInFormContainer" spacing="14.0">
+                    <VBox spacing="4.0">
+                        <Label styleClass="heading-2" text="Welcome back" />
+                        <Label styleClass="subheading" text="Sign in to your AgriLoop marketplace account" />
+                    </VBox>
+
+                    <VBox spacing="6.0">
+                        <Label styleClass="form-label" text="Email Address" />
+                        <TextField fx:id="loginEmailField" promptText="you@example.com" />
+                    </VBox>
+
+                    <VBox spacing="6.0">
+                        <Label styleClass="form-label" text="Password" />
+                        <PasswordField fx:id="loginPasswordField" promptText="Enter your password" />
+                    </VBox>
+
+                    <Button fx:id="signInSubmitBtn" maxWidth="1.7976931348623157E308" styleClass="btn-primary" style="-fx-padding: 10px 16px; -fx-font-size: 14px;" text="Sign In" />
+
+                    <HBox alignment="CENTER" spacing="6.0">
+                        <Label styleClass="text-muted" text="Don't have an account?" />
+                        <Button fx:id="switchToRegisterLink" styleClass="btn-ghost" style="-fx-text-fill: -fx-color-primary; -fx-font-weight: bold;" text="Create an Account" />
+                    </HBox>
+                </VBox>
+
+                <!-- Create Account (Register) Form -->
+                <VBox fx:id="registerFormContainer" spacing="12.0" visible="false">
+                    <VBox spacing="4.0">
+                        <Label styleClass="heading-2" text="Create an account" />
+                        <Label styleClass="subheading" text="Join the digital agricultural waste marketplace" />
+                    </VBox>
+
+                    <VBox spacing="6.0">
+                        <Label styleClass="form-label" text="Full Name *" />
+                        <TextField fx:id="regFullNameField" promptText="Your name or business entity" />
+                    </VBox>
+
+                    <VBox spacing="6.0">
+                        <Label styleClass="form-label" text="Email Address *" />
+                        <TextField fx:id="regEmailField" promptText="you@example.com" />
+                    </VBox>
+
+                    <HBox spacing="10.0">
+                        <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                            <Label styleClass="form-label" text="Phone Number" />
+                            <TextField fx:id="regPhoneField" promptText="+1 555-0199" />
+                        </VBox>
+                        <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                            <Label styleClass="form-label" text="Location / City" />
+                            <TextField fx:id="regLocationField" promptText="State / Region" />
+                        </VBox>
+                    </HBox>
+
+                    <VBox spacing="6.0">
+                        <Label styleClass="form-label" text="I am a *" />
+                        <ComboBox fx:id="regRoleCombo" maxWidth="1.7976931348623157E308" />
+                    </VBox>
+
+                    <HBox spacing="10.0">
+                        <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                            <Label styleClass="form-label" text="Password *" />
+                            <PasswordField fx:id="regPasswordField" promptText="At least 6 characters" />
+                        </VBox>
+                        <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                            <Label styleClass="form-label" text="Confirm Password *" />
+                            <PasswordField fx:id="regConfirmPasswordField" promptText="Re-enter password" />
+                        </VBox>
+                    </HBox>
+
+                    <Button fx:id="registerSubmitBtn" maxWidth="1.7976931348623157E308" styleClass="btn-primary" style="-fx-padding: 10px 16px; -fx-font-size: 14px;" text="Create Account" />
+
+                    <HBox alignment="CENTER" spacing="6.0">
+                        <Label styleClass="text-muted" text="Already registered?" />
+                        <Button fx:id="switchToSignInLink" styleClass="btn-ghost" style="-fx-text-fill: -fx-color-primary; -fx-font-weight: bold;" text="Sign In Instead" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</HBox>

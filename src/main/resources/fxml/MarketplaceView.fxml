@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane stylesheets="@../css/main.css, @../css/components.css" 
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.agriloop.controller.MarketplaceViewController">
+
+    <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+        <VBox spacing="20.0" style="-fx-padding: 0 8px 32px 0;">
+            <!-- Header Banner -->
+            <VBox spacing="4.0">
+                <Label styleClass="heading-2" text="Agricultural Waste Marketplace" />
+                <Label styleClass="subheading" text="Discover verified biomass residues, stalks, husks, and byproducts directly from farming regions" />
+            </VBox>
+
+            <!-- Filter and Search Toolbar -->
+            <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="card" style="-fx-padding: 14px 20px;">
+                <TextField fx:id="searchField" prefWidth="280.0" promptText="Search material, residue, location..." />
+                <ComboBox fx:id="categoryFilterCombo" prefWidth="220.0" promptText="All Categories" />
+                <Button fx:id="filterApplyBtn" styleClass="btn-secondary" text="Apply Filters" />
+                <Button fx:id="refreshBtn" styleClass="btn-icon">
+                    <graphic>
+                        <StackPane fx:id="refreshIconBox" />
+                    </graphic>
+                </Button>
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="countLabel" styleClass="text-muted" text="0 materials available" />
+            </HBox>
+
+            <!-- Listings Content Container -->
+            <VBox fx:id="listingsContainer" alignment="CENTER" minHeight="300.0" spacing="14.0" />
+        </VBox>
+    </ScrollPane>
+
+    <!-- Modal Overlay for Material Details & Purchase Request -->
+    <StackPane fx:id="detailModalOverlay" managed="false" styleClass="modal-overlay" visible="false">
+        <VBox alignment="CENTER" maxHeight="720.0" maxWidth="640.0" spacing="16.0" styleClass="modal-dialog">
+            <!-- Modal Header -->
+            <HBox alignment="CENTER_LEFT" styleClass="modal-header">
+                <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+                    <Label fx:id="modalTitleLabel" styleClass="heading-2" text="Material Details" />
+                    <Label fx:id="modalSubtitleLabel" styleClass="subheading" text="Review specifications, smart matching, and submit purchase request" />
+                </VBox>
+                <Button fx:id="modalCloseBtn" styleClass="btn-ghost" />
+            </HBox>
+
+            <!-- Modal Scrollable Content -->
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                <VBox spacing="16.0" style="-fx-padding: 4px 8px 12px 0;">
+                    <!-- Key Specs Grid -->
+                    <HBox spacing="16.0" style="-fx-background-color: #F8FAFC; -fx-padding: 14px 18px; -fx-background-radius: 10px;">
+                        <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size: 11.5px; -fx-text-fill: #64748B;" text="Category" />
+                            <Label fx:id="modalCategoryLabel" style="-fx-font-size: 13.5px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" />
+                        </VBox>
+                        <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size: 11.5px; -fx-text-fill: #64748B;" text="Available Stock" />
+                            <Label fx:id="modalQuantityLabel" style="-fx-font-size: 13.5px; -fx-font-weight: bold; -fx-text-fill: #059669;" />
+                        </VBox>
+                        <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size: 11.5px; -fx-text-fill: #64748B;" text="Asking Price" />
+                            <Label fx:id="modalPriceLabel" style="-fx-font-size: 13.5px; -fx-font-weight: bold; -fx-text-fill: #2563EB;" />
+                        </VBox>
+                        <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size: 11.5px; -fx-text-fill: #64748B;" text="Moisture Content" />
+                            <Label fx:id="modalMoistureLabel" style="-fx-font-size: 13.5px; -fx-font-weight: bold; -fx-text-fill: #D97706;" />
+                        </VBox>
+                    </HBox>
+
+                    <!-- Location & Seller Info -->
+                    <HBox spacing="16.0">
+                        <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size: 11.5px; -fx-text-fill: #64748B;" text="Farm Location / Origin" />
+                            <Label fx:id="modalLocationLabel" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" />
+                        </VBox>
+                        <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size: 11.5px; -fx-text-fill: #64748B;" text="Seller" />
+                            <Label fx:id="modalSellerLabel" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" />
+                        </VBox>
+                    </HBox>
+
+                    <!-- Description -->
+                    <VBox spacing="4.0">
+                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #475569;" text="Seller Description" />
+                        <Label fx:id="modalDescriptionLabel" style="-fx-font-size: 12.5px; -fx-text-fill: #334155;" wrapText="true" />
+                    </VBox>
+
+                    <!-- Smart Waste Matching Section -->
+                    <VBox spacing="6.0" style="-fx-background-color: #F0FDF4; -fx-border-color: #BBF7D0; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-padding: 12px 14px;">
+                        <Label style="-fx-text-fill: #15803D; -fx-font-size: 12px; -fx-font-weight: bold;" text="SMART INDUSTRIAL USE MATCHING" />
+                        <VBox fx:id="modalMatchingContainer" spacing="6.0" />
+                    </VBox>
+
+                    <!-- Value Estimation Section -->
+                    <VBox spacing="6.0" style="-fx-background-color: #F8FAFC; -fx-border-color: #E2E8F0; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-padding: 12px 14px;">
+                        <Label style="-fx-text-fill: #334155; -fx-font-size: 12px; -fx-font-weight: bold;" text="AGRILOOP ESTIMATED FAIR MARKET VALUE" />
+                        <Label fx:id="modalValuationRangeLabel" style="-fx-text-fill: #059669; -fx-font-size: 14px; -fx-font-weight: bold;" />
+                        <Label fx:id="modalValuationDemandLabel" style="-fx-text-fill: #64748B; -fx-font-size: 11.5px;" />
+                    </VBox>
+
+                    <!-- Purchase Request Form Fields -->
+                    <VBox spacing="10.0" style="-fx-padding: 8px 0 0 0;">
+                        <Label styleClass="heading-3" text="Submit Purchase Request" />
+                        <HBox spacing="12.0">
+                            <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                                <Label styleClass="form-label" text="Requested Quantity (Tons) *" />
+                                <TextField fx:id="orderQtyField" promptText="e.g. 10.00" />
+                            </VBox>
+                            <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                                <Label styleClass="form-label" text="Estimated Material Cost (₹)" />
+                                <TextField fx:id="orderTotalField" editable="false" style="-fx-font-weight: bold;" text="₹0.00" />
+                            </VBox>
+                        </HBox>
+
+                        <!-- Structured Buyer Delivery Address -->
+                        <VBox spacing="10.0" style="-fx-background-color: #F8FAFC; -fx-border-color: #E2E8F0; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-padding: 12px 14px;">
+                            <HBox alignment="CENTER_LEFT" spacing="6.0">
+                                <Label style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" text="Facility Delivery Address *" />
+                                <Label style="-fx-font-size: 11px; -fx-text-fill: #64748B;" text="(Mandatory structured drop location)" />
+                            </HBox>
+
+                            <GridPane hgap="10.0" vgap="8.0">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="50.0" />
+                                    <ColumnConstraints percentWidth="50.0" />
+                                </columnConstraints>
+
+                                <!-- Row 0: House/Building No & Street -->
+                                <VBox spacing="3.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                    <Label styleClass="form-label" text="Facility / Building No. *" />
+                                    <TextField fx:id="orderHouseNoField" promptText="e.g. Unit 45 / Shed 2" />
+                                </VBox>
+                                <VBox spacing="3.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                    <Label styleClass="form-label" text="Street Name / Industrial Road *" />
+                                    <TextField fx:id="orderStreetField" promptText="e.g. Anna Nagar Main Road" />
+                                </VBox>
+
+                                <!-- Row 1: Area & City -->
+                                <VBox spacing="3.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                    <Label styleClass="form-label" text="Area / Locality *" />
+                                    <TextField fx:id="orderAreaField" promptText="e.g. Kolathur / Sector 25" />
+                                </VBox>
+                                <VBox spacing="3.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label styleClass="form-label" text="City / Town *" />
+                                    <TextField fx:id="orderCityField" promptText="e.g. Chennai / Panipat" />
+                                </VBox>
+
+                                <!-- Row 2: District & State -->
+                                <VBox spacing="3.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                                    <Label styleClass="form-label" text="District *" />
+                                    <TextField fx:id="orderDistrictField" promptText="e.g. Chennai / Panipat" />
+                                </VBox>
+                                <VBox spacing="3.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Label styleClass="form-label" text="State *" />
+                                    <TextField fx:id="orderStateField" promptText="e.g. Tamil Nadu / Haryana" />
+                                </VBox>
+
+                                <!-- Row 3: PIN Code & Country -->
+                                <VBox spacing="3.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                                    <Label styleClass="form-label" text="PIN Code (6 digits) *" />
+                                    <TextField fx:id="orderPinField" promptText="e.g. 600099" />
+                                </VBox>
+                                <VBox spacing="3.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <Label styleClass="form-label" text="Country *" />
+                                    <TextField fx:id="orderCountryField" text="India" />
+                                </VBox>
+                            </GridPane>
+                        </VBox>
+
+                        <VBox spacing="4.0">
+                            <Label styleClass="form-label" text="Procurement Notes" />
+                            <TextField fx:id="orderNotesField" promptText="e.g. Required delivery by end of month" />
+                        </VBox>
+                        
+                        <Label fx:id="orderErrorLabel" style="-fx-text-fill: #DC2626; -fx-font-size: 12px; -fx-font-weight: bold;" />
+                    </VBox>
+                </VBox>
+            </ScrollPane>
+
+            <!-- Modal Footer Controls -->
+            <HBox alignment="CENTER_RIGHT" spacing="12.0" styleClass="modal-footer">
+                <Button fx:id="modalCancelBtn" styleClass="btn-secondary" text="Cancel" />
+                <Button fx:id="modalSubmitOrderBtn" styleClass="btn-primary" text="Confirm Purchase Request" />
+            </HBox>
+        </VBox>
+    </StackPane>
+</StackPane>

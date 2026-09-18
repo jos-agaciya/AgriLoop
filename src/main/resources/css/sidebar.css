@@ -1,0 +1,157 @@
+/* ==========================================================================
+   AGRILOOP — SIDEBAR NAVIGATION STYLES
+   Role Selector, Active Nav Highlighting & Brand Shell
+   ========================================================================== */
+
+@import "variables.css";
+
+.sidebar-container {
+    -fx-background-color: #0F172A; /* Modern Deep Slate */
+    -fx-pref-width: 250px;
+    -fx-min-width: 250px;
+    -fx-max-width: 250px;
+    -fx-padding: 20px 14px;
+}
+
+.brand-header {
+    -fx-padding: 6px 12px 18px 12px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.brand-logo-icon-box {
+    -fx-background-color: -fx-color-primary;
+    -fx-background-radius: 10px;
+    -fx-padding: 8px;
+    -fx-alignment: CENTER;
+}
+
+.brand-title {
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.brand-badge {
+    -fx-background-color: rgba(16, 185, 129, 0.2);
+    -fx-background-radius: 4px;
+    -fx-padding: 2px 6px;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #34D399;
+}
+
+/* Role Selector Pill Box */
+.role-selector-card {
+    -fx-background-color: rgba(30, 41, 59, 0.7);
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-padding: 10px 12px;
+    -fx-spacing: 6px;
+}
+
+.role-selector-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #94A3B8;
+    -fx-text-transform: uppercase;
+}
+
+.role-combo-box {
+    -fx-background-color: #1E293B;
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 4px 8px;
+}
+
+.role-combo-box .cell {
+    -fx-text-fill: #FFFFFF;
+}
+
+.role-combo-box .combo-box-popup .list-view {
+    -fx-background-color: #1E293B;
+    -fx-border-color: #334155;
+}
+
+.role-combo-box .combo-box-popup .list-cell {
+    -fx-text-fill: #E2E8F0;
+    -fx-padding: 6px 10px;
+}
+
+.role-combo-box .combo-box-popup .list-cell:hover {
+    -fx-background-color: #334155;
+}
+
+/* Navigation Section */
+.nav-section-title {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748B;
+    -fx-padding: 16px 12px 6px 12px;
+}
+
+/* Navigation Menu Buttons */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 13.5px;
+    -fx-font-weight: 500;
+    -fx-padding: 10px 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-graphic-text-gap: 12px;
+    -fx-pref-width: 222px;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-text-fill: #FFFFFF;
+}
+
+.nav-button-active {
+    -fx-background-color: -fx-color-primary;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(5, 150, 105, 0.35), 10, 0, 0, 3);
+}
+
+.nav-button-active:hover {
+    -fx-background-color: -fx-color-primary-light;
+}
+
+/* Footer / DB Status Area */
+.sidebar-footer {
+    -fx-padding: 14px 4px 0 4px;
+    -fx-border-color: rgba(255, 255, 255, 0.08) transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+.db-status-pill {
+    -fx-background-color: rgba(30, 41, 59, 0.6);
+    -fx-background-radius: 8px;
+    -fx-padding: 8px 12px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+}
+
+.db-status-pill:hover {
+    -fx-background-color: rgba(30, 41, 59, 0.9);
+}
+
+.status-dot-green {
+    -fx-fill: #10B981;
+}
+
+.status-dot-amber {
+    -fx-fill: #F59E0B;
+}
+
+.status-dot-red {
+    -fx-fill: #EF4444;
+}

@@ -1,0 +1,10 @@
+# AgriLoop Database Configuration Template
+db.host=localhost
+db.port=3306
+db.name=agriloop_db
+db.user=root
+db.password=your_mysql_password_here
+db.pool.max_size=10
+db.pool.min_idle=2
+db.pool.connection_timeout=5000
+db.pool.idle_timeout=600000

@@ -1,0 +1,210 @@
+/* ==========================================================================
+   AGRILOOP — MAIN APPLICATION STYLESHEET
+   Google Sans Typography, Window Layout, Form Controls & Base Components
+   ========================================================================== */
+
+@import "variables.css";
+
+.root {
+    -fx-background-color: -fx-color-bg;
+    -fx-font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -fx-font-size: 13.5px;
+    -fx-text-fill: -fx-color-text-primary;
+}
+
+/* Typography Classes */
+.heading-1 {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-color-text-primary;
+}
+
+.heading-2 {
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-color-text-primary;
+}
+
+.heading-3 {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-color-text-primary;
+}
+
+.subheading {
+    -fx-font-size: 13.5px;
+    -fx-text-fill: -fx-color-text-secondary;
+}
+
+.text-muted {
+    -fx-text-fill: -fx-color-text-muted;
+    -fx-font-size: 12.5px;
+}
+
+.text-bold {
+    -fx-font-weight: bold;
+}
+
+/* Top Bar Layout */
+.topbar-container {
+    -fx-background-color: -fx-color-surface;
+    -fx-border-color: transparent transparent -fx-color-border transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 12px 28px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.search-input-box {
+    -fx-background-color: -fx-color-surface-hover;
+    -fx-background-radius: 10px;
+    -fx-border-color: -fx-color-border;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-padding: 4px 12px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.search-input-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-prompt-text-fill: -fx-color-text-muted;
+    -fx-font-size: 13px;
+    -fx-pref-width: 220px;
+}
+
+.search-input-field:focused {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+/* Main Content Wrapper */
+.content-viewport {
+    -fx-background-color: -fx-color-bg;
+    -fx-padding: 24px 32px;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8px;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #CBD5E1;
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #94A3B8;
+}
+
+/* Standard Buttons */
+.button {
+    -fx-cursor: hand;
+    -fx-font-size: 13.5px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+}
+
+.btn-primary {
+    -fx-background-color: -fx-color-primary;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(5, 150, 105, 0.25), 8, 0, 0, 2);
+}
+
+.btn-primary:hover {
+    -fx-background-color: -fx-color-primary-light;
+}
+
+.btn-primary:pressed {
+    -fx-background-color: -fx-color-primary-dark;
+}
+
+.btn-secondary {
+    -fx-background-color: -fx-color-surface-hover;
+    -fx-text-fill: -fx-color-text-primary;
+    -fx-border-color: -fx-color-border;
+    -fx-border-width: 1px;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: -fx-color-surface-active;
+}
+
+.btn-outline {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-color-primary;
+    -fx-border-color: -fx-color-primary;
+    -fx-border-width: 1.5px;
+}
+
+.btn-outline:hover {
+    -fx-background-color: -fx-color-primary-subtle;
+}
+
+.btn-ghost {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-color-text-secondary;
+    -fx-border-color: transparent;
+    -fx-padding: 6px 12px;
+}
+
+.btn-ghost:hover {
+    -fx-background-color: -fx-color-surface-hover;
+    -fx-text-fill: -fx-color-text-primary;
+}
+
+.btn-danger {
+    -fx-background-color: -fx-color-danger;
+    -fx-text-fill: #FFFFFF;
+}
+
+.btn-danger:hover {
+    -fx-background-color: #DC2626;
+}
+
+/* Icon Buttons */
+.btn-icon {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8px;
+    -fx-padding: 8px;
+    -fx-cursor: hand;
+}
+
+.btn-icon:hover {
+    -fx-background-color: -fx-color-surface-hover;
+}
+
+/* Form Controls */
+.text-field, .text-area, .combo-box {
+    -fx-background-color: -fx-color-surface;
+    -fx-border-color: -fx-color-border;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 8px 12px;
+    -fx-font-size: 13.5px;
+    -fx-text-fill: -fx-color-text-primary;
+}
+
+.text-field:focused, .text-area:focused, .combo-box:focused {
+    -fx-border-color: -fx-color-primary;
+    -fx-effect: dropshadow(gaussian, rgba(5, 150, 105, 0.15), 6, 0, 0, 0);
+}
+
+.form-label {
+    -fx-font-size: 12.5px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-color-text-secondary;
+}

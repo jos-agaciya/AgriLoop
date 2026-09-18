@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fitToWidth="true" styleClass="scroll-pane" 
+            stylesheets="@../css/main.css, @../css/components.css" 
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.agriloop.controller.SellWasteViewController">
+    
+    <VBox spacing="20.0" style="-fx-padding: 0 8px 32px 0;">
+        <VBox maxWidth="780.0" spacing="20.0" styleClass="card">
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" spacing="14.0" styleClass="card-header">
+                <StackPane fx:id="formHeaderIconContainer" styleClass="stat-icon-emerald" />
+                <VBox spacing="2.0">
+                    <Label styleClass="heading-2" text="Create Waste Listing" />
+                    <Label styleClass="subheading" text="Enter your agricultural byproduct inventory details to list on the marketplace" />
+                </VBox>
+            </HBox>
+
+            <!-- Form Fields Grid -->
+            <GridPane hgap="16.0" vgap="14.0">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150.0" prefWidth="180.0" />
+                    <ColumnConstraints hgrow="ALWAYS" />
+                </columnConstraints>
+
+                <!-- Listing Title -->
+                <Label styleClass="form-label" text="Listing Title *" GridPane.rowIndex="0" />
+                <TextField fx:id="titleField" promptText="e.g. Wheat Straw Bales - Season 2026" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <!-- Waste Type -->
+                <Label styleClass="form-label" text="Waste / Byproduct Type *" GridPane.rowIndex="1" />
+                <TextField fx:id="wasteTypeField" promptText="e.g. Paddy Straw, Rice Husk, Corn Stalks" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <!-- Category -->
+                <Label styleClass="form-label" text="Category *" GridPane.rowIndex="2" />
+                <ComboBox fx:id="categoryCombo" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <!-- Quantity & Price -->
+                <Label styleClass="form-label" text="Quantity &amp; Price *" GridPane.rowIndex="3" />
+                <HBox spacing="12.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <TextField fx:id="quantityField" promptText="Quantity (Tons)" HBox.hgrow="ALWAYS" />
+                    <TextField fx:id="priceField" promptText="Price per Ton (₹)" HBox.hgrow="ALWAYS" />
+                </HBox>
+
+                <!-- Moisture % -->
+                <Label styleClass="form-label" text="Moisture Content (%)" GridPane.rowIndex="4" />
+                <TextField fx:id="moistureField" promptText="e.g. 12.0 (Optional)" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                <!-- Availability Dates -->
+                <Label styleClass="form-label" text="Availability Window" GridPane.rowIndex="5" />
+                <HBox spacing="12.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                    <DatePicker fx:id="availableFromPicker" promptText="Available From" HBox.hgrow="ALWAYS" />
+                    <DatePicker fx:id="availableUntilPicker" promptText="Available Until" HBox.hgrow="ALWAYS" />
+                </HBox>
+
+                <!-- Description -->
+                <Label styleClass="form-label" text="Description &amp; Quality Notes" GridPane.rowIndex="6" />
+                <TextArea fx:id="descriptionArea" prefHeight="70.0" promptText="Additional specifications, baling conditions, storage status..." wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            </GridPane>
+
+            <!-- Structured Farm Pickup Location Section -->
+            <VBox spacing="12.0" style="-fx-background-color: #F8FAFC; -fx-border-color: #E2E8F0; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-padding: 16px 18px;">
+                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                    <Label style="-fx-font-size: 13.5px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" text="Farm Pickup Address *" />
+                    <Label style="-fx-font-size: 11.5px; -fx-text-fill: #64748B;" text="(Mandatory structured location for logistics and route calculation)" />
+                </HBox>
+
+                <GridPane hgap="12.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50.0" />
+                        <ColumnConstraints percentWidth="50.0" />
+                    </columnConstraints>
+
+                    <!-- Row 0: House No & Street -->
+                    <VBox spacing="4.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label styleClass="form-label" text="House / Building / Plot No. *" />
+                        <TextField fx:id="houseNoField" promptText="e.g. Farm House No. 12 / Plot 4B" />
+                    </VBox>
+                    <VBox spacing="4.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Label styleClass="form-label" text="Street Name / Village Road *" />
+                        <TextField fx:id="streetField" promptText="e.g. Gandhi Street / Farm Link Road" />
+                    </VBox>
+
+                    <!-- Row 1: Area & City -->
+                    <VBox spacing="4.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Label styleClass="form-label" text="Area / Locality *" />
+                        <TextField fx:id="areaField" promptText="e.g. Kundrathur / Nabha Road" />
+                    </VBox>
+                    <VBox spacing="4.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label styleClass="form-label" text="City / Town *" />
+                        <TextField fx:id="cityField" promptText="e.g. Chennai / Patiala" />
+                    </VBox>
+
+                    <!-- Row 2: District & State -->
+                    <VBox spacing="4.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                        <Label styleClass="form-label" text="District *" />
+                        <TextField fx:id="districtField" promptText="e.g. Kanchipuram / Patiala" />
+                    </VBox>
+                    <VBox spacing="4.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label styleClass="form-label" text="State *" />
+                        <TextField fx:id="stateField" promptText="e.g. Tamil Nadu / Punjab" />
+                    </VBox>
+
+                    <!-- Row 3: PIN Code & Country -->
+                    <VBox spacing="4.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                        <Label styleClass="form-label" text="PIN Code (6 digits) *" />
+                        <TextField fx:id="pinCodeField" promptText="e.g. 600069" />
+                    </VBox>
+                    <VBox spacing="4.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label styleClass="form-label" text="Country *" />
+                        <TextField fx:id="countryField" text="India" />
+                    </VBox>
+                </GridPane>
+            </VBox>
+
+            <!-- Validation Feedback -->
+            <Label fx:id="validationStatusLabel" style="-fx-text-fill: #EF4444; -fx-font-weight: bold; -fx-font-size: 12.5px;" />
+
+            <!-- Form Actions -->
+            <HBox alignment="CENTER_RIGHT" spacing="12.0">
+                <Button fx:id="resetButton" styleClass="btn-ghost" text="Reset Form" />
+                <Button fx:id="publishButton" styleClass="btn-primary" text="Publish to Marketplace" />
+            </HBox>
+        </VBox>
+    </VBox>
+</ScrollPane>

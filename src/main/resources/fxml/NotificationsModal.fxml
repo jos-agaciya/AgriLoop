@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefWidth="480.0" spacing="16.0" styleClass="modal-dialog" 
+      stylesheets="@../css/main.css, @../css/components.css" 
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.agriloop.controller.NotificationsModalController">
+    
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="modal-header">
+        <StackPane fx:id="notifModalIconContainer" styleClass="stat-icon-emerald" />
+        <VBox spacing="2.0">
+            <Label styleClass="heading-3" text="Notifications" />
+            <Label styleClass="subheading" text="System alerts &amp; real-time updates" />
+        </VBox>
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="closeButton" styleClass="btn-ghost" />
+    </HBox>
+
+    <!-- Content Area (Clean Empty State) -->
+    <VBox fx:id="contentContainer" alignment="CENTER" minHeight="180.0" spacing="12.0" />
+
+    <!-- Footer Actions -->
+    <HBox alignment="CENTER_RIGHT" spacing="10.0" styleClass="modal-footer">
+        <Button fx:id="clearAllButton" styleClass="btn-ghost" text="Clear all" />
+        <Button fx:id="markAllReadButton" styleClass="btn-secondary" text="Mark all as read" />
+    </HBox>
+</VBox>

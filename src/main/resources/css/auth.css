@@ -1,0 +1,122 @@
+/* ==========================================================================
+   AGRILOOP — AUTHENTICATION STYLESHEET (LOGIN & REGISTER)
+   Clean, Modern Split-Panel Design with Emerald & Slate Palette
+   ========================================================================== */
+
+@import "variables.css";
+
+.auth-root {
+    -fx-background-color: -fx-color-bg;
+}
+
+/* Left Hero Brand Panel */
+.auth-hero-panel {
+    -fx-background-color: linear-gradient(to bottom right, #0F172A, #1E293B);
+    -fx-padding: 48px 44px;
+    -fx-pref-width: 440px;
+    -fx-min-width: 400px;
+    -fx-max-width: 480px;
+}
+
+.auth-hero-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.auth-hero-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #94A3B8;
+    -fx-wrap-text: true;
+}
+
+.auth-feature-row {
+    -fx-spacing: 14px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.auth-feature-icon-box {
+    -fx-background-color: rgba(16, 185, 129, 0.15);
+    -fx-background-radius: 8px;
+    -fx-padding: 8px;
+    -fx-alignment: CENTER;
+}
+
+.auth-feature-title {
+    -fx-font-size: 13.5px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #E2E8F0;
+}
+
+.auth-feature-desc {
+    -fx-font-size: 12px;
+    -fx-text-fill: #94A3B8;
+}
+
+/* Right Form Panel */
+.auth-form-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 40px 52px;
+    -fx-alignment: CENTER;
+}
+
+.auth-tab-bar {
+    -fx-background-color: #F1F5F9;
+    -fx-background-radius: 10px;
+    -fx-padding: 4px;
+    -fx-spacing: 4px;
+}
+
+.auth-tab-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #64748B;
+    -fx-font-size: 13.5px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 24px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER;
+}
+
+.auth-tab-btn:hover {
+    -fx-text-fill: #1E293B;
+}
+
+.auth-tab-btn-active {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #0F172A;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.08), 8, 0, 0, 2);
+}
+
+.auth-error-banner {
+    -fx-background-color: #FEF2F2;
+    -fx-border-color: #FECACA;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-spacing: 8px;
+}
+
+.auth-error-text {
+    -fx-text-fill: #DC2626;
+    -fx-font-size: 12.5px;
+    -fx-font-weight: bold;
+}
+
+.auth-success-banner {
+    -fx-background-color: #ECFDF5;
+    -fx-border-color: #A7F3D0;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-spacing: 8px;
+}
+
+.auth-success-text {
+    -fx-text-fill: #059669;
+    -fx-font-size: 12.5px;
+    -fx-font-weight: bold;
+}
+
